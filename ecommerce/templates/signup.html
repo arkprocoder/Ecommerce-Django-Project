@@ -1,0 +1,66 @@
+{% extends 'auth.html' %}
+{% block title %}
+Signup
+
+{% endblock title %}
+{% block style %}
+<style>
+ input[type="password"] {
+      font-family: "Asterisk";
+      font-style: normal;
+      font-weight: normal;
+      speak: none;
+      color: red;
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      /* Uncomment for 3D effect */
+      /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+      /* add spacing to better separate each image */
+      letter-spacing: 2px;
+    }
+    </style>
+
+{% endblock style %}
+{% block content %}
+ <h1 class="mb-1"><span>Sign Up</span> </h1>
+   {% for message in messages %}
+
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong></strong>{{ message }}
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+<form class=" text-white py-2 px-2" action="/signup" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control mb-2" id="email" name="email" aria-describedby="emailHelp" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control mb-2" name="pass1" id="exampleInputPassword1" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Confirm Password</label>
+    <input type="password" class="form-control" name="pass2" id="exampleInputPassword2" required>
+  </div>
+<br>
+  <button type="submit" class="form-control bg-success text-white">Sign In</button>
+   <p class="mb-2 pb-0">Already User?</p>
+    
+      <a href="/login" class="about-btn scrollto">Login</a>
+</form>
+
+
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+{% endblock script %}    
+{% endblock content %}

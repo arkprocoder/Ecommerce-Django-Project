@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.mask {
+    position: relative;
+    overflow: hidden;
+}
+
+input#pass {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+</style>
+</head>
+<body>
+<div class="mask">
+<input type="text" id="txtMask" autocomplete="false">
+
+<input type="text" id="pass">
+</div>
+    
+<script>
+
+var txt = document.getElementById("txtMask");
+var hdn = document.getElementById("pass");
+
+
+hdn.addEventListener("keyup", function(evt){
+
+txt.value = '';
+for(let i=0; i<hdn.value.length;i++)
+   {
+       txt.value +='*';
+  }         
+
+});
+</script>
+</body>
+</html>
+
+let screen = document.getElementById('screen')
+let buttons = document.querySelectorAll('button');
+let screenvalue = "";
+
+for (items of buttons) {
+    items.addEventListener('click', (e) => {
+        buttonText = e.target.innerText;
+        if (buttonText == '=') {
+            screen.value = eval(screenvalue)
+
+        } else if (buttonText == 'C') {
+            screenvalue = "";
+            screen.value = "";
+        } else {
+            screenvalue += buttonText
+            screen.value = screenvalue
+        }
+    })
+}

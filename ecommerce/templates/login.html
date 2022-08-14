@@ -1,0 +1,38 @@
+{% extends 'auth.html' %}
+{% block title %}
+login
+{% endblock title %}
+{% block content %}
+ <h1 class="mb-4 pb-0"><span>Login</span> </h1>
+   {% for message in messages %}
+   
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong></strong>{{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+<form class=" text-white py-3 px-3" action="/login" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control mb-3" id="exampleInputEmail1" name="email"  aria-describedby="emailHelp" required>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="pass1" required>
+  </div>
+<br>
+  <button type="submit" class="form-control bg-success text-white">Login</button>
+   <p class="mb-2 pb-0">New User?</p>
+    
+      <a href="/signup" class="about-btn scrollto">Signup</a>
+</form>
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+{% endblock script %}       
+{% endblock content %}
